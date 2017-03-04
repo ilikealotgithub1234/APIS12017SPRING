@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>WK1LOGINFRM</title>
+    <style>
+    body{
+      background-color: red;
+    }
+
+    </style>
+  </head>
+  <body>
+    <h1 id = 'titleofpg'>Sign Up!</h1>
+    <p>EMAIL</p>
+    <input id= 'email' type= 'email'/>
+    <p>Password</p>
+    <input id = 'password' type= 'password'/>
+
+    <button id = 'submit'>Submit</button>
+    <p>You can only sign up ONCE!</p>
+    <script>
+let i = 0
+let data = [];
+let newdata = [];
+$('#submit').click(()=>{
+  let email = $('#email').val();
+  data[0] = email;
+  let password = $('#password').val();
+  data[1] = $('#password').val();
+
+    console.log(email+' is your EMAIL '+password+' is your PASSWORD.');
+    $('#titleofpg').text('Login');
+      $('#email').val('')
+      $('#password').val('')
+    i++;
+
+if(i>1){
+  let newemail = $('#email').val();
+  let newpassword = $('#email').val();
+  newdata[0] = newemail;
+  newdata[1] = newpassword;
+  if(data[0]===newdata[0] && data[1]===newdata[1]){
+    $('#titleofpg').text('LOGGED IN! PARTYTIME!');
+    console.log('yay')
+  }
+  else{
+    $('#titleofpg').text('nope.')
+  }
+}
+})
+
+    </script>
+  </body>
+</html>
