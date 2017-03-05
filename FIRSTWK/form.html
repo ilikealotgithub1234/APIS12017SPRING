@@ -19,12 +19,14 @@
     <input id = 'password' type= 'password'/>
 
     <button id = 'submit'>Submit</button>
+    <button id = 'login'>Login</button>
     <p>You can only sign up ONCE!</p>
     <script>
 let i = 0
 let data = [];
 let newdata = [];
 $('#submit').click(()=>{
+  if(i=0){
   let email = $('#email').val();
   data[0] = email;
   let password = $('#password').val();
@@ -35,8 +37,8 @@ $('#submit').click(()=>{
       $('#email').val('')
       $('#password').val('')
     i++;
-
-if(i>1){
+}
+})
   let newemail = $('#email').val();
   let newpassword = $('#email').val();
   newdata[0] = newemail;
@@ -48,8 +50,8 @@ if(i>1){
   else{
     $('#titleofpg').text('nope.')
   }
-}
-})
+
+
 
     </script>
   </body>
