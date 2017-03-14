@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>Name</p>
+<input type = 'text' id ='name' \>
+    <button id = 'submit'>Submit</button>
+    <script>
+    let $name = $('#name');
+    let student = {
+      scores: [],
+    };
+     let scoreGenerator = () =>{
+      for (let i = 0; i++; i<10){
+        let randScore = Math.random(0,10);
+        student.name = $name.val()
+        student.scores.push(randScore)
+      }
+    }
+
+    $('#submit').click(()=>{
+
+      scoreGenerator();
+      student.name =  $name.val()
+
+    })
+    </script>
+  </body>
+</html>
