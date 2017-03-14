@@ -13,18 +13,32 @@
     let $name = $('#name');
     let student = {
       scores: [],
+      average: 0,
+      age: 12
     };
      let scoreGenerator = () =>{
-      for (i = 0; i<10; i++){
-        let randScore = Math.random(0,10);
+      for (i = 0; i<11; i++){
+        let randScore = (Math.random() * 100) + 1 - 50;
+        while(randScore<50){
+          randScore = (Math.random() * 100) + 1 - 50;
+        }
         student.name = $name.val()
         student.scores.push(randScore)
+        console.log('working')
       }
     }
-
+    let average = (array) =>{
+      let sum = 0
+      for(let i = 0; i < array.length;i++){
+        sum += array[i];
+      }
+      student.average = sum/array.length;
+      console.log(student.average);
+    }
     $('#submit').click(()=>{
 
       scoreGenerator();
+      average(student.scores);
       student.name =  $name.val()
 
     })
