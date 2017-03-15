@@ -32,16 +32,19 @@
       return x;
     }
      let scoreGenerator = () =>{
-      for (i = 0; i<11; i++){
-        let randScore = (Math.random() * 100) + 1 - 50;
-        while(randScore<50){
-          randScore = (Math.random() * 100) + 1 - 50;
-        }
-        student.name = $name.val()
-        student.scores.push(randScore)
-        console.log('working')
+       for(let i = 0; i<10; i++){
+         let randScore = (Math.random()*100)
+         if(randScore<50){
+           randScore += 50
+         }
+          student.name = $name.val()
+          student.scores.push(randScore)
+          console.log('working')
+          console.log(randScore)
+       }
+
       }
-    }
+
     let average = (array) =>{
       let sum = 0
       for(let i = 0; i < array.length;i++){
