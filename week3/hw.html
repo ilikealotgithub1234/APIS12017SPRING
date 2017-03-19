@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Undefined Grades V2</title>
+  </head>
+  <body>
+<script>
+let students = [
+
+]
+
+let studentGenerator = (studentsArray) =>{
+
+
+  for(let i = 1; i<16;i++){
+    students[i] = {
+     name:"",
+     age:"",
+     hwScores:0,
+     testScores:0,
+    $.ajax({
+      url: 'https://randomuser.me/api/',
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+        studentsArray[i].name = data.results[0].name.first;
+        studentsArray[i].age = data.results[0].name.first;
+
+      }
+    });
+
+  }
+
+}
+  let roundhundreth = (num)=>{
+    x = Math.ceil(num * 100) / 100;
+
+    return x;
+  }
+   let scoreGenerator = () =>{
+     for(let i = 0; i<10; i++){
+       let randScore = (Math.random()*100)
+       if(randScore<50){
+         randScore += 50
+       }
+        student.name = $name.val()
+        student.scores.push(randScore)
+        console.log('working')
+        console.log(randScore)
+     }
+
+    }
+
+  let average = (array) =>{
+    let sum = 0
+    for(let i = 0; i < array.length;i++){
+      sum += array[i];
+    }
+    student.name.average = roundhundreth(sum/array.length);
+    console.log(student.name.average);
+  }
+  $('#submit').click(()=>{
+
+    scoreGenerator();
+    average(student.name.scores);
+
+
+  })
+
+
+</script>
+  </body>
+</html>
