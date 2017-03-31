@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script>
+for(let i = 0; i < 5; i++){
+    $.get('https://randomuser.me/api',
+    (response)=>{
+      JSON.stringify(response);
+      let spanName = `<span id = "name">${response.results[0].name.title} ${response.results[0].name.first} ${response.results[0].name.last}</span>`
+      let spanUser = `<span id = "user"> Date of Birth: ${response.results[0].dob} Cell: ${response.results[0].cell} </span>`
+      let spanSpace = `<span id = spaceHolder><br><br></span>`
+      console.log(response);
+      console.log("API RECIEVENEDD")
+      $('body').append(spanName);
+      $('body').append(spanUser);
+      $('body').append(spanSpace);
+
+  }
+  );
+}
+  console.log("alldoen")
+    </script>
+  </body>
+</html>

@@ -6,6 +6,27 @@
     <title>Undefined Grades V2</title>
   </head>
   <body>
+<table>
+  <tr>
+    <td>firstName</td>
+    <td>lastNames</td>
+    <td>age</td>
+    <td>gradeAVG</td>
+    <td>grades</td>
+  </tr>
+  <tr>
+    <td id = 'firstName' >Jill</td>
+    <td id = 'lastNames'>Smith</td>
+    <td id = 'age'>50</td>
+  </tr>
+  <tr>
+
+
+  </tr>
+
+
+
+</table>
 <script>
 let students = [
 {},{},{}
@@ -22,10 +43,14 @@ let studentGenerator = (studentsArray) =>{
      testScores:0,
    }
     $.get({
+
       url: 'https://randomuser.me/api/',
       dataType: 'json',
       success: function(data) {
         console.log(data);
+        let studentTablething = `    <td id = 'firstName' >${data.results[0].name.first}</td>
+            <td id = 'lastNames'>${data.results[0].name.last}</td>
+            <td id = 'age'>${data.results[0].name.first}</td>`
         studentsArray[i].name = data.results[0].name.first;
         let age = (Math.random()*100);
         for(age; age < 12; age){}
@@ -80,7 +105,7 @@ let studentGenerator = (studentsArray) =>{
 
   })
 
-
+studentGenerator(students);
 </script>
   </body>
 </html>
