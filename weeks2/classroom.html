@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    html{
+      background-color: red
+
+    }
+    body{
+
+    }
+
+    </style>
+  </head>
+  <body>
+    <p>Name</p>
+<input type = 'text' id ='name' \>
+    <button id = 'submit'>Submit</button>
+    <script>
+    $.get("https://randomuser.me/api/",
+  (response) => {
+    JSON.stringify(response);
+
+
+  })
+
+    let $name = $('#name');
+    let student = {
+      scores: [],
+      average: 0,
+      age: 12
+    };
+    let roundhundreth = (num)=>{
+      x = Math.ceil(num * 100) / 100;
+
+      return x;
+    }
+     let scoreGenerator = () =>{
+       for(let i = 0; i<10; i++){
+         let randScore = (Math.random()*100)
+         if(randScore<50){
+           randScore += 50
+         }
+          student.name = $name.val()
+          student.scores.push(randScore)
+          console.log('working')
+          console.log(randScore)
+       }
+
+      }
+
+    let average = (array) =>{
+      let sum = 0
+      for(let i = 0; i < array.length;i++){
+        sum += array[i];
+      }
+      student.average = roundhundreth(sum/array.length);
+      console.log(student.average);
+    }
+    $('#submit').click(()=>{
+
+      scoreGenerator();
+      average(student.scores);
+      student.name =  $name.val()
+
+    })
+    </script>
+  </body>
+</html>
