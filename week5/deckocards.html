@@ -8,10 +8,12 @@
   <body>
     <script>
     let deckId = ``
-    $.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=999999999999999`).done((data)=>{
-      //console.log(data);
-      //deckId = data.deck_id;
+
+    $.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`).done((data)=>{
+      console.log(data);
+      deckId = data.deck_id;
     })
+
 
 
 
