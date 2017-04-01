@@ -6,13 +6,28 @@
     <title></title>
   </head>
   <body>
+    <button>HIT</button>
+    <button>Stand</button>
     <script>
+    let botCards = []
+    let pile4each = 2
     let deckId = ``
-
+    let img = ``
     $.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`).done((data)=>{
       console.log(data);
       deckId = data.deck_id;
+      $.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=52`).done((data)=>{
+        console.log(data);
+        for(let i = 0; i < pile4each; i++){
+          img  = `<img src = '${data.cards[i].image}'/>'`
+          $(`body`).append(img);
+          botCards.append[i];
+        }
+      })
+
     })
+
+
 
 
 
