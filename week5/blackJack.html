@@ -9,12 +9,17 @@
     <button>HIT</button>
     <button>Stand</button>
     <script>
-    let yorScore = 0;
+    let yourScore = 0;
     let botCards = [];
     let humanCards = [];
-    cardEvalulator = (cardVal) =>{
-      if(cardVal[0].value === '0' || cardVal[0].value === ){
+    cardEvalulator = (cardVal, player) =>{
+      if(cardVal[0].value === '0' || cardVal[0].value === "J" ||   cardVal[0].value === "Q" || cardVal[0].value === "K"){
+        player.push(10)
 
+
+      }
+      else if = ()=>{
+        
       }
     }
     //let pile4each = 1
