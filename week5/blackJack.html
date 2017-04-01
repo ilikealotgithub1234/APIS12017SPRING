@@ -10,18 +10,27 @@
     <button>Stand</button>
     <script>
     let botCards = []
+    let humanCards = []
     //let pile4each = 1
     let deckId = ``
     let img = ``
     $.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`).done((data)=>{
       console.log(data);
       deckId = data.deck_id;
-      $.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).done((data)=>{
-        console.log(data);
+      humanTurn = () = {
+        img  = `<img src = '${data.cards[0].image}'/>'`
+        $(`body`).append(img);
+
+      }
+      botTurn = ()=>{
+        $.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).done((data)=>{
+          console.log(data);
           img  = `<img src = '${data.cards[0].image}'/>'`
-          $(`body`).append(img);
-          botCards.push(data.cards[0].code);
-        })
+            $(`body`).append(img);
+            botCards.push(data.cards[0].code);
+          })
+      }
+
       })
 
 
