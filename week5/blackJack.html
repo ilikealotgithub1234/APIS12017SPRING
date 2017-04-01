@@ -18,8 +18,8 @@
 
 
       }
-      else if = ()=>{
-        
+      else if(cardVal[0].value != '0' || cardVal[0].value != 'J' || cardVal[0].value != 'Q' || cardVal[0].value != 'K'  ){
+        player.push(cardVal[0].value)
       }
     }
     //let pile4each = 1
@@ -28,12 +28,12 @@
     $.get(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`).done((data)=>{
       console.log(data);
       deckId = data.deck_id;
-      humanTurn = () = {
-        img  = `<img src = '${data.cards[0].image}'/>'`
-        $(`body`).append(img);
+      humanTurn() = {
+        let img  = `<img src = ${data.cards[0].image}/>`;
+        $('body').append(img);
 
       }
-      botTurn = ()=>{
+      botTurn()=>{
         $.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`).done((data)=>{
           console.log(data);
           img  = `<img src = '${data.cards[0].image}'/>'`
