@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SPARKFUN</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+    var public_key = 'E3DDvz0zxRiwm6QK37ow';
+ $.ajax({
+   url: 'http://data.sparkfun.com/output/' + public_key + '.json',
+   jsonp: 'callback',
+   cache: true,
+   dataType: 'jsonp',
+   data: {
+     page: 1
+   },
+   success: function(response) {
+     // response will be a javascript
+     // array of objects
+     console.log(response);
+     
+   }
+ });
+
+
+    </script>
+  </body>
+</html>
