@@ -6,8 +6,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+    <h1>get</h1>
+    <h3 id = ''>Current Mood</h3>
+    <p class = 'currentMood'></p>
+    <h3 id = ''>timestamps</h3>
+    <p class = 'timeStamps'></p>
+    <h3 id = ''>Screenname</h3>
+    <p class = 'Screenname'></p>
+    <h3 id = ''>Favourite Food</h3>
+    <p class = 'favfood'></p>
+    <h1>Post</h1>
+    currentMood
+    <input id = 'currentMood'></input>
+    Screenname
+    <input id = 'screenname'></input>
+    favfood
+    <input id = 'favfood'> </input>
     <script>
+
     var public_key = 'E3DDvz0zxRiwm6QK37ow';
+/*
  $.ajax({
    url: 'http://data.sparkfun.com/output/' + public_key + '.json',
    jsonp: 'callback',
@@ -17,10 +35,39 @@
      page: 1
    },
    success: function(response) {
+     console.log('YAYYYYYYYYYYYYYYY IT RAN tHE CALLLKOPOLE')
+     console.log(response)
      // response will be a javascript
      // array of objects
+     if(response.screenname === "DataLord"){
      console.log(response);
-     
+     for(var i = 0; i < response.length; i++)
+     $('.currentMood').text(response[i].currentmood);
+     $('.screenname').text()
+     $('.favfood').text()
+
+   }
+
+   }
+ });
+*/
+ var public_key = 'E3DDvz0zxRiwm6QK37ow';
+
+ $.ajax({
+   method: 'POST',
+   url: 'http://data.sparkfun.com/input/E3DDvz0zxRiwm6QK37ow?private_key=d1kk02j2v8Iv0o9dZpRv',
+   jsonp: 'callback',
+   cache: true,
+   dataType: 'jsonp',
+   data: {
+     screenname: ':)',
+     currentmood: ':)',
+     favfood: '🍕'
+
+   },
+   success: function(response) {
+
+     console.log(response.message);
    }
  });
 
