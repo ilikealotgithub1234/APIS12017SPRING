@@ -7,24 +7,95 @@
   </head>
   <body>
     <h1>get</h1>
-    <h3 id = ''>Current Mood</h3>
-    <p class = 'currentMood'></p>
+    <h3 id = ''>Bread</h3>
+    <p id = 'bread'></p>
     <h3 id = ''>timestamps</h3>
-    <p class = 'timeStamps'></p>
-    <h3 id = ''>Screenname</h3>
-    <p class = 'Screenname'></p>
-    <h3 id = ''>Favourite Food</h3>
-    <p class = 'favfood'></p>
+    <p id = 'timeStamp'></p>
+    <h3 id = ''>name</h3>
+    <p id = 'name'></p>
+    <h3 id = ''>dressing</h3>
+    <p id = 'dressing'></p>
+    <h3 id = ''>Vegetable</h3>
+    <p id = 'vegetable'></p>
+    <h3 id = ''>Meat</h3>
+    <p id = 'meat'></p>
+    Which number order do you want to see?
+    <input type = 'text' id = 'numoforder'></input>
+    <button id = 'showget'>Show data</button>
     <h1>Post</h1>
-    currentMood
-    <input id = 'currentMood'></input>
-    Screenname
-    <input id = 'screenname'></input>
-    favfood
-    <input id = 'favfood'> </input>
+    <form id = 'postform'>
+      <h3>Meat</h2>
+      <br>
+      <label for="ham">ham</label>
+      <input type = "radio" id = 'ham'></input>
+      <br>
+      <label for="roastbeef">roast beef</label>
+      <input type = "radio" id = 'roastbeed'></input>
+      <br>
+      <label for="turkey">turkey</label>
+      <input type = "radio" id = 'turkey'  ></input>
+      <br>
+      <h3>Name</h2>
+      <input id = 'name' type = 'text'></input>
+      <br>
+      <h3>Dressing</h2>
+      <select id = 'dressing'>
+  <label for="cheese">cheese</label>
+  <option id = 'cheese' value="cheese">cheese</option>
+  <label for="italian">italian</label>
+  <option id = 'italian' value="italian">italian</option>
+  <label for="russian">russian</label>
+  <option id = 'russian' value="russian">russian</option>
+  <label for="mayo">mayo</label>
+  <option id = 'mayo' value="mayo">mayo</option>
+
+</select>
+<input type = 'text' id = 'otherdressing'>Other Dressing</input>
+<br>
+<h3>bread</h2>
+<input id = 'bread'type = 'text'></input>
+<br>
+<button id = 'submit'>submit</button>
+    </form>
+
     <script>
 
-    var public_key = 'E3DDvz0zxRiwm6QK37ow';
+    let public_key = 'WROJn182N7IAwDYGR4lA';
+    let privateKey = 'Xd2brpKAz4TXKyr0pDaX';
+$('#showget').click(()=>{
+  let numoforder = parseInt($('#numoforder').value);
+  console.log(numoforder);
+  $.ajax({
+    url: 'http://data.sparkfun.com/output/' + public_key + '.json',
+    jsonp: 'callback',
+    cache: true,
+    dataType: 'jsonp',
+    data: {
+      page: 1
+    },
+    success: function(response) {
+      console.log('YAYYYYYYYYYYYYYYY IT RAN tHE CODE')
+
+      // response will be a javascript
+      // array of objects
+
+      for(var i = 0; i < 1; i++){
+        $('#bread').text(response[i].bread);
+        $('#name').text(response[i].name);
+        $('#dressing').text(response[i].dressing);
+        $('#vegetable').text(response[i].vegetable);
+        $('#meat').text(response[i].meat);
+        $('#timeStamp').text(response[i].timestamp);
+        console.log(response[i])
+      }
+
+
+    }
+
+  })
+  });
+
+
 /*
  $.ajax({
    url: 'http://data.sparkfun.com/output/' + public_key + '.json',
@@ -35,14 +106,14 @@
      page: 1
    },
    success: function(response) {
-     console.log('YAYYYYYYYYYYYYYYY IT RAN tHE CALLLKOPOLE')
+     console.log('YAYYYYYYYYYYYYYYY IT RAN tHE CODE')
      console.log(response)
      // response will be a javascript
      // array of objects
      if(response.screenname === "DataLord"){
      console.log(response);
      for(var i = 0; i < response.length; i++)
-     $('.currentMood').text(response[i].currentmood);
+     $('.currentMood').textContent(response[i].currentmood);
      $('.screenname').text()
      $('.favfood').text()
 
@@ -51,25 +122,30 @@
    }
  });
 */
- var public_key = 'E3DDvz0zxRiwm6QK37ow';
+$('#submit').click(()=>{
+  $.ajax({
+    method: 'POST',
+    url: 'http://data.sparkfun.com/input/WROJn182N7IAwDYGR4lA?private_key=Xd2brpKAz4TXKyr0pDaX',
+    jsonp: 'callback',
+    cache: true,
+    dataType: 'jsonp',
+    data: {
+      //bread dressing meat name vegetable
+      bread: $('')
+      dressing:
+      meat: 'Roast Beef',
+      name: 'Erik',
+      vegetable : 'Lettuce, Tomato',
 
- $.ajax({
-   method: 'POST',
-   url: 'http://data.sparkfun.com/input/E3DDvz0zxRiwm6QK37ow?private_key=d1kk02j2v8Iv0o9dZpRv',
-   jsonp: 'callback',
-   cache: true,
-   dataType: 'jsonp',
-   data: {
-     screenname: ':)',
-     currentmood: ':)',
-     favfood: '🍕'
 
-   },
-   success: function(response) {
+    },
+    success: function(response) {
 
-     console.log(response.message);
-   }
- });
+      console.log(response.message);
+    }
+  });
+
+})
 
 
     </script>
