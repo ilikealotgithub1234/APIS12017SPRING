@@ -6,8 +6,29 @@
     <title></title>
   </head>
   <body>
-    
 
-    <script></script>
+
+    <script>
+    for(let i = 0; i < 100; i++){
+        $.get('https://randomuser.me/api',
+        (response)=>{
+          let rand = Math.floor(Math.random()*100)
+          JSON.stringify(response);
+          let profPic = `<a href = 'https://unsplash.it/${rand}/?random'><img style = 'width:128px;height:128px;' id = profPic${i} src = 'https://unsplash.it/${rand}/?random'/></a>`
+          let spanName = `<span id = "name" style = 'color: purple;'>${response.results[0].name.title} ${response.results[0].name.first} ${response.results[0].name.last}</span>`
+          let spanInfo = `<span id = "user" style = 'color: green;'> Date of Birth: ${response.results[0].dob} Cell: ${response.results[0].cell} </span>`
+          let spanSpace = `<span id = spaceHolder style = 'color: blue;'><br><br></span>`;
+          let spanUser = `<span id = spaceHolder style = 'color: red;'>Username : ${response.results[0].login.username}</span>`
+          console.log(response);
+          console.log("API RECIEVENEDD")
+          $('body').append(spanUser);
+          $('body').append(spanName);
+          $('body').append(spanInfo);
+          $('body').append(spanSpace);
+          $('body').append(profPic);
+      }
+      );
+    }
+    </script>
   </body>
 </html>
