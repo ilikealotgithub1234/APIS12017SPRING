@@ -35,7 +35,7 @@ let students = [
 let studentGenerator = (studentsArray) =>{
 
 
-  for(let i = 1; i<16;i++){
+  for(let i = 1; i=1;i++){
     students[i] = {
      name:"",
      age:"",
@@ -85,6 +85,7 @@ let studentGenerator = (studentsArray) =>{
         student.scores.push(randScore)
         console.log('working')
         console.log(randScore)
+
      }
 
     }
@@ -96,6 +97,7 @@ let studentGenerator = (studentsArray) =>{
     }
     student.name.average = roundhundreth(sum/array.length);
     console.log(student.name.average);
+return student.name.average;
   }
   $('#submit').click(()=>{
 
