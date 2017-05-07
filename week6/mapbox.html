@@ -4,20 +4,59 @@
     <meta charset="utf-8">
     <title></title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+    #marker{
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      align-content: center;
+
+
+    }
+    #weatherInfo{
+      align:right;
+      position: absolute;
+      left:1000px;
+    }
+
+
+    </style>
   </head>
   <body>
-    <div id='map' style='width: 400px; height: 300px;'></div>
+    <div id='map' style='width: 500px; height: 500px;'></div>
+    <div id = 'marker'></div>
+    <div id= 'weatherInfo'></div<>
     <script>
+    $('#marker').click(()=>{
+
+      $.ajax({
+          url: "http://api.openweathermap.org/data/2.5/weather?lat=40.7258667&lon=-74.0069607&APPID=f082b2e54edd718e1d73990a355e4d82",
+          type: 'GET',
+
+          success: function(result) {
+              console.log(result);
+              console.log(result.main.temp);
+              let ktemp = result.main.temp;
+              console.log(ktemp);
+              let ftemp = 1.8*(ktemp - 273) + 32
+              console.log(ftemp);
+              $('#weatherInfo').text(ftemp);
+          }
+      });
+    })
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXBtdHVuZXMiLCJhIjoiY2oxdjcxYXoxMDAwcTJxcDJsbGdveTd2aCJ9.2m5aa_o58_Y990PmApwbjA';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9'
-        var marker = new mapboxgl.Marker()
-        .setLngLat([30.5, 50.5])
-        .addTo(map);
+
 
 })
+    var marker = new mapboxgl.Marker(document.getElementById('marker')).setLngLat([-74.0069607,40.7258667]).addTo(map);
+
+    </script>
+
     </script>
   </body>
 </html>
