@@ -36,7 +36,7 @@
       <input type = "radio" id = 'turkey'  ></input>
       <br>
       <h3>Name</h2>
-      <input id = 'name' type = 'text'></input>
+      <input id = 'nameinput' type = 'text'></input>
       <br>
       <h3>Dressing</h2>
       <select id = 'dressing'>
@@ -62,9 +62,20 @@
 
     let public_key = 'WROJn182N7IAwDYGR4lA';
     let privateKey = 'Xd2brpKAz4TXKyr0pDaX';
+    let dressing = [$('#cheese')[0],$('#italian')[0],$('#russian')[0],$('#mayo')[0]];
+    $('#submit'){
+      for(let i = 0; i < dressing.length; i++){
+        if(dressing[i].selected = true){
+          console.log('your dressing is ' + dressing[i])
+        }
+      }
+    }
+
 $('#showget').click(()=>{
   let numoforder = parseInt($('#numoforder').value);
+
   console.log(numoforder);
+  for()
   $.ajax({
     url: 'http://data.sparkfun.com/output/' + public_key + '.json',
     jsonp: 'callback',
@@ -122,19 +133,20 @@ $('#showget').click(()=>{
    }
  });
 */
-$('#submit').click(()=>{
+/*$('#submit').click(()=>{
   $.ajax({
     method: 'POST',
     url: 'http://data.sparkfun.com/input/WROJn182N7IAwDYGR4lA?private_key=Xd2brpKAz4TXKyr0pDaX',
     jsonp: 'callback',
     cache: true,
     dataType: 'jsonp',
+    if()
     data: {
       //bread dressing meat name vegetable
-      bread: $('')
-      dressing:
+      //bread: $('')
+      //dressing: $()
       meat: 'Roast Beef',
-      name: 'Erik',
+      name: $('#nameinput').val(),
       vegetable : 'Lettuce, Tomato',
 
 
@@ -146,7 +158,7 @@ $('#submit').click(()=>{
   });
 
 })
-
+*/
 
     </script>
   </body>
