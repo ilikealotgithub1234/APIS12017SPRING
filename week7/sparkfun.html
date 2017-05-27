@@ -62,20 +62,20 @@
 
     let public_key = 'WROJn182N7IAwDYGR4lA';
     let privateKey = 'Xd2brpKAz4TXKyr0pDaX';
-    let dressing = [$('#cheese')[0],$('#italian')[0],$('#russian')[0],$('#mayo')[0]];
-    $('#submit'){
+    let dressing = [$('#cheese'),$('#italian'),$('#russian'),$('#mayo')];
+    $('#submit').click(function(){
       for(let i = 0; i < dressing.length; i++){
-        if(dressing[i].selected = true){
-          console.log('your dressing is ' + dressing[i])
+        if(dressing[i][0].selected = true){
+          console.log('your dressing is ' + dressing[i][0].val)
         }
       }
-    }
+    })
 
 $('#showget').click(()=>{
   let numoforder = parseInt($('#numoforder').value);
 
   console.log(numoforder);
-  for()
+
   $.ajax({
     url: 'http://data.sparkfun.com/output/' + public_key + '.json',
     jsonp: 'callback',
@@ -107,8 +107,7 @@ $('#showget').click(()=>{
   });
 
 
-/*
- $.ajax({
+/* $.ajax({
    url: 'http://data.sparkfun.com/output/' + public_key + '.json',
    jsonp: 'callback',
    cache: true,
@@ -132,8 +131,8 @@ $('#showget').click(()=>{
 
    }
  });
-*/
-/*$('#submit').click(()=>{
+
+$('#submit').click(()=>{
   $.ajax({
     method: 'POST',
     url: 'http://data.sparkfun.com/input/WROJn182N7IAwDYGR4lA?private_key=Xd2brpKAz4TXKyr0pDaX',
