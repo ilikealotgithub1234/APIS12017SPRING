@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Sandwich Form</title>
+  </head>
+  <body>
+    <h1>get</h1>
+    <h3 id = ''>Bread</h3>
+    <p id = 'bread'></p>
+    <h3 id = ''>timestamps</h3>
+    <p id = 'timeStamp'></p>
+    <h3 id = ''>name</h3>
+    <p id = 'name'></p>
+    <h3 id = ''>dressing</h3>
+    <p id = 'dressing'></p>
+    <h3 id = ''>Vegetable</h3>
+    <p id = 'vegetable'></p>
+    <h3 id = ''>Meat</h3>
+    <p id = 'meat'></p>
+    Which number order do you want to see?
+    <input type = 'text' id = 'numoforder'></input>
+    <button id = 'showget'>Show data</button>
+    <h1>Post</h1>
+    <input type = 'text' id = 'breadP' placeholder='bread' />
+    <input type = 'text' id = 'nameP' placeholder='name'/>
+    <input type = 'text' id = 'dressingP' placeholder='dressing'/>
+    <input type = 'text' id = 'vegetableP' placeholder='vegetable'/>
+    <input type = 'text' id = 'meatP' placeholder='meat'/>
+    <button id = 'post'>Order<button>
+    <script>
+    $('#showget').click(()=>{
+      let numoforder = $('#numoforder').val();
+      $.ajax({
+        url: `http://data.sparkfun.com/output/6o4MRQvaZySq2WxmZ14g`,
+        jsonp: 'callback',
+        cache: true,
+        dataType: 'jsonp',
+        data: {
+          page: 1
+        },
+        success: function(response) {
+
+          console.log('YAYYYYYYYYYYYYYYY IT RAN tHE CODE');
+          console.log(response);
+          console.log(response[numoforder]);
+          //bread definer
+          $('#bread').text(response[numoforder].bread);
+          $('#name').text(response[numoforder].name);
+          $('#dressing').text(response[numoforder].dressing);
+          $('#vegetable').text(response[numoforder].vegetable);
+          $('#meat').text(response[numoforder].meat);
+          $('#timeStamp').text(response[numoforder].timestamp);
+          }
+        })
+      })
+      $('#post').click(()=>{
+        $.ajax({
+          url: 'http://data.sparkfun.com/input/6o4MRQvaZySq2WxmZ14g',
+          jsonp: 'callback',
+          cache: true,
+          dataType: 'jsonp',
+          data: {
+            bread: $('#breadP').val(),
+            name: $('#nameP').val(),
+            dressing: $('#dressingP').val(),
+            vegetable: $('#vegetableP').val(),
+            meat: $('#meatP').val(),
+
+          },
+          success: function(response) {
+
+            }
+          })
+        })
+
+    </script>
+    <h1>Post</h1>
+  </body>
+</html>

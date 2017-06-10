@@ -65,6 +65,7 @@
     let dressing = [$('#cheese'),$('#italian'),$('#russian'),$('#mayo')];
     $('#submit').click(function(){
       for(let i = 0; i < dressing.length; i++){
+        console.log(dressing)
         if(dressing[i][0].selected = true){
           console.log('your dressing is ' + dressing[i][0].val)
         }
